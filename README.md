@@ -1,5 +1,7 @@
 # covid-19
 
+![CI](https://github.com/wahyupermadie/covid-19-web/workflows/CI/badge.svg)
+
 > A Vue.js project
 
 ## Build Setup
