@@ -1,7 +1,14 @@
 <template>
   <div class="container">
       <b-card-group deck>
-        <b-card bg-variant="warning" text-variant="white" header="Kasus Terkonfirmasi" class="text-center">
+        <b-card bg-variant="warning" text-variant="white" header="Total Kasus Terkonfirmasi" class="text-center">
+          <div v-if="loading"> 
+              <b-spinner label="Spinning"></b-spinner>
+          </div>
+          <b-card-text v-else>{{covidResponse.jumlahKasus}}</b-card-text>
+        </b-card>
+
+        <b-card bg-variant="info" text-variant="white" header="Dalam Perawatan" class="text-center">
           <div v-if="loading"> 
               <b-spinner label="Spinning"></b-spinner>
           </div>
@@ -41,7 +48,7 @@ export default {
             key: 'provinsi',
           },
           {
-            key: 'kasus_terkonfirmasi',
+            key: 'kasus_positif',
             sortable: false
           },
           {
@@ -75,23 +82,23 @@ export default {
       var label = []
       var sembuh = []
       var meninggal = []
-      var perawatan = []
+      var positif = []
       if(value != undefined){
         for(var i = 0; i < value.length - 1 ; i++){
           var data = {
             "provinsi":value[i].provinsi,
-            "kasus_terkonfirmasi":value[i].kasusPosi,
+            "kasus_positif":value[i].kasusPosi,
             "kasus_sembuh":value[i].kasusSemb,
             "kasus_meninggal":value[i].kasusMeni
           }
           label.push(value[i].provinsi)
           sembuh.push(value[i].kasusSemb)
           meninggal.push(value[i].kasusMeni)
-          perawatan.push(value[i].kasusPosi)
+          positif.push(value[i].kasusPosi)
 
           this.items.push(data)
         }
-        this.createChart(label, sembuh, meninggal, perawatan)
+        this.createChart(label, sembuh, meninggal, positif)
       }
     }
   },
@@ -102,7 +109,7 @@ export default {
     fetchCovidByProvince: function () {
       this.$store.dispatch("loadDataByProvince")
     },
-    createChart: function (label, sembuh, meninggal, perawatan) {
+    createChart: function (label, sembuh, meninggal, positif) {
       const ctx = document.getElementById('covid-chart');
       const myChart = new Chart(ctx, {
         type: 'line',
@@ -146,8 +153,8 @@ export default {
                   borderWidth: 3
                 },
                 { // one line graph
-                  label: 'Kasus Terkonfirmasi',
-                  data: perawatan,
+                  label: 'Positif',
+                  data: positif,
                   backgroundColor: [
                     'rgba(247, 255, 33,.5)',
                   ],
