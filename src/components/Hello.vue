@@ -80,15 +80,14 @@ export default {
         for(var i = 0; i < value.length - 1 ; i++){
           var data = {
             "provinsi":value[i].provinsi,
-            "kasus_terkonfirmasi":value[i].kasusTerkonfirmasiAkumulatif,
-            "kasus_sembuh":value[i].kasusSembuhAkumulatif,
-            "kasus_meninggal":value[i].kasusMeninggalAkumulatif,
-            "pembaruan":value[i].pembaruan,
+            "kasus_terkonfirmasi":value[i].kasusPosi,
+            "kasus_sembuh":value[i].kasusSemb,
+            "kasus_meninggal":value[i].kasusMeni
           }
           label.push(value[i].provinsi)
-          sembuh.push(value[i].kasusSembuhAkumulatif)
-          meninggal.push(value[i].kasusMeninggalAkumulatif)
-          perawatan.push(value[i].kasusTerkonfirmasiAkumulatif)
+          sembuh.push(value[i].kasusSemb)
+          meninggal.push(value[i].kasusMeni)
+          perawatan.push(value[i].kasusPosi)
 
           this.items.push(data)
         }
