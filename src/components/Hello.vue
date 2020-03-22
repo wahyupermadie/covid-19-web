@@ -120,7 +120,7 @@ export default {
                   label: 'Sembuh',
                   data: sembuh,
                   backgroundColor: [
-                    'rgba(71, 183,132,.5)',
+                    'rgba(39, 167, 68,.5)',
                   ],
                   borderColor: [
                     '#36495d',
@@ -156,7 +156,7 @@ export default {
                   label: 'Positif',
                   data: positif,
                   backgroundColor: [
-                    'rgba(247, 255, 33,.5)',
+                    'rgba(22, 162, 184,.5)',
                   ],
                   borderColor: [
                     '#36495d',
