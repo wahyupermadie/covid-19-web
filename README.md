@@ -1,7 +1,7 @@
 # covid-19
 
 ![CI](https://github.com/wahyupermadie/covid-19-web/workflows/CI/badge.svg)
-
+[COVID19](https://covid19-wepe.netlify.com/#/)
 > A Vue.js project
 
 Using API From
